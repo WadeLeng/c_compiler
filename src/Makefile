@@ -1,5 +1,3 @@
-DEPS = .cpp.o
-
 include ../Make.properties
 
 all: compiler.o asm.o lexical.o parser.o symbol.o token.o table.o production.o expression.o 
@@ -13,8 +11,6 @@ include $(SRC:.cpp=.d)
 	$(CC) -MM $(CPPFLAGS) $< > $@.$$$$; \
 	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
 	rm -f $@.$$$$
-#$(DEPS):
-#	$(CC) -c $^ $(CPPFLAGS)
 
 clean:
 	rm -f *.o
